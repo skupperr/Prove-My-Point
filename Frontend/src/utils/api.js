@@ -13,7 +13,12 @@ export const useApi = () => {
             }
         };
 
-        const response = await fetch(`http://localhost:8000/api/${endpoint}`, {
+        // const response = await fetch(`http://localhost:8000/api/${endpoint}`, {
+        //     ...defaultOptions,
+        //     ...options
+        // });
+
+        const response = await fetch(`https://my-fastapi-service.onrender.com/api/${endpoint}`, {
             ...defaultOptions,
             ...options
         });
