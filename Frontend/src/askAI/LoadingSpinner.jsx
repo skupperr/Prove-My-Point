@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./loadingSpinner.css";
+import "./LoadingSpinner.css";
 
 const sciFiPhrases = [
   "Scanning cosmic archives...",
