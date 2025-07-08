@@ -18,7 +18,7 @@ export const useApi = () => {
         //     ...options
         // });
 
-        const response = await fetch(`https://my-fastapi-service.onrender.com/api/${endpoint}`, {
+        const response = await fetch(`https://prove-my-point.onrender.com/api/${endpoint}`, {
             ...defaultOptions,
             ...options
         });
