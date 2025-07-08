@@ -1,25 +1,22 @@
-# Ignore Python virtual environment
+# Python virtual environment
 .venv/
 
-# Ignore all .env files in Backend
-Backend/*.env
+# Ignore all .env files in any subdirectory
+**/*.env
+
+# Ignore Firebase key files
 **/firebase-key.json
 
-Frontend/*.env
+# Node.js
+Frontend/node_modules/
 
-# Ignore Firebase service account key
-Backend/firebase-key.json
-
-# Optional: Ignore VSCode settings or IDE config
+# VSCode / IDE
 .vscode/
 .idea/
 
-# Ignore OS files
+# OS junk
 .DS_Store
 Thumbs.db
-
-# Ignore node_modules even if frontend has its own .gitignore
-Frontend/node_modules/
 
 
 # Logs
