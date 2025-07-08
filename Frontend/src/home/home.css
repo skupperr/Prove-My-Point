@@ -1,0 +1,234 @@
+/* Raw CSS equivalent for the given Tailwind JSX structure */
+
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.layout-container {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+} 
+
+.layout-inner {
+  flex: 1;
+  padding: 20px 160px; /* px-40 in Tailwind */
+  display: flex;
+  justify-content: center;
+}
+
+.layout-content-container {
+  max-width: 960px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url('bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 480px;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.hero-section h1 {
+  font-size: 35px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.033em;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.hero-section h2 {
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  width: 700px;
+  padding-bottom: 20px;
+}
+
+.text-center{
+    justify-items: center;
+}
+
+.hero-button {
+  display: flex;
+  min-width: 84px;
+  max-width: 480px;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding: 0 1rem;
+  background-color: #c9daec;
+  color: #121416;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  border-radius: 9999px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.section {
+  padding: 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  max-width: 720px;
+}
+
+.section-description {
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 720px;
+  padding-left: 9px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+  gap: 0.75rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: #1c1f24;
+  border: 1px solid #00f6ff55;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.card p {
+  font-size: 0.875rem;
+  color: #9daab9;
+  font-weight: 400;
+}
+
+.benefit-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.benefit {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background-color: #1e2124;
+  border: 1px solid #40474f;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.benefit h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.target-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #111418;
+  padding: 0.5rem 1rem;
+  min-height: 72px;
+  border-radius: 0.5rem;
+}
+
+.target-group p:first-child {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.target-group p:last-child {
+  font-size: 0.875rem;
+  color: #9da9b9;
+}
+
+
+.footer-separator {
+  color: #a3aab2;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0.25rem 1rem 0.75rem; /* pt-1 px-4 pb-3 */
+  text-align: center;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-container {
+  display: flex;
+  flex: 1;
+  max-width: 960px;
+  flex-direction: column;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* gap-6 */
+  padding: 2.5rem 1.25rem; /* py-10 px-5 */
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* Optional responsive behavior, matching @[480px] */
+@media (min-width: 480px) {
+  .footer-links {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.footer-link {
+  color: #a3aab2;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  min-width: 10rem; /* 160px = min-w-40 */
+  text-decoration: none; /* <- removes underline */
+}
+
+.footer-copy {
+  color: #a3aab2;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}

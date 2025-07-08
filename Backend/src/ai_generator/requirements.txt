@@ -1,0 +1,17 @@
+langchain
+langchain-community
+langchain-google-genai
+langchain-google-firestore
+langchain_ollama
+firestore
+chromadb
+tiktoken
+sentence-transformers
+langchainhub
+python-dotenv
+fastapi
+aiohttp 
+feedparser 
+uvicorn
+xmltodict
+coreapi
