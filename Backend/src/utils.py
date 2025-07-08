@@ -28,7 +28,8 @@ def authenticate_and_get_user_details(request):
         request_state = clerk_sdk.authenticate_request(
             request,
             AuthenticateRequestOptions(
-                authorized_parties=os.getenv("CLERK_AUTHORIZED_PARTY").split(","),
+                authorized_parties=["https://prove-my-point.vercel.app", "http://localhost:5173"],  # Keep local dev for testing
+
                 jwt_key=os.getenv("JWT_KEY")
                 # jwt_key = os.getenv("JWT_KEY").replace("\\n", "\n")
             )
