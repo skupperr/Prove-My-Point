@@ -1,6 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
-/* @import "tailwindcss"; */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
 
 :root {
   --primary-color: #2563eb;
@@ -183,7 +182,7 @@ body {
   display: none
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
 
 .question-box {
   display: flex;
