@@ -71,6 +71,8 @@ async def generate_answer(
                 "status": "INVALID",
                 "message": result["explanation"]
             }
+        
+        print(result["response"])
 
         return {
             "status": "VALID",
