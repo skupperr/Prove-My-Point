@@ -66,6 +66,7 @@ async def generate_answer(
         result = await main(query)
 
         if result["status"] == "INVALID":
+            print(result["explanation"])
             return {
                 "status": "INVALID",
                 "message": result["explanation"]
