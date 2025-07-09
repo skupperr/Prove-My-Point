@@ -11,6 +11,10 @@ class QuestionInput(BaseModel):
 
 router = APIRouter()
 
+@router.get("/test")
+async def test():
+    return {"status": "working"}
+
 
 
 @router.post('/generate-answer')
