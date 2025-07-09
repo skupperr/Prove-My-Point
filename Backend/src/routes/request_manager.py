@@ -55,6 +55,8 @@ async def generate_answer(
 ):
     query = input.question.strip()
 
+    print(query)
+
     if not query:
         raise HTTPException(status_code=400, detail="Empty question is not allowed.")
 
