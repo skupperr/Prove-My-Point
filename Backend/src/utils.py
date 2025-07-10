@@ -17,12 +17,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-clerk_sdk = Clerk(bearer_auth=os.getenv('CLERK_SECRET_KEY') or os.environ.get("CLERK_SECRET_KEY"))
+clerk_sdk = Clerk(bearer_auth=(os.getenv('CLERK_SECRET_KEY') or os.environ.get("CLERK_SECRET_KEY")).strip())
 
 
 def authenticate_and_get_user_details(request):
 
-    auth_header = request.headers.get("authorization")
+    # auth_header = request.headers.get("authorization")
 
     try:
         request_state = clerk_sdk.authenticate_request(
