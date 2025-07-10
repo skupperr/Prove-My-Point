@@ -87,7 +87,7 @@ export function Home() {
                                     <div>
                                         <h2>Answer Synthesis</h2>
                                         <p>We synthesize the
-                                            extracted knowledge to provide a comprehensive and accurate answer.</p>
+                                            extracted knowledge to provide a comprehensive and accurate answer thanks to our advanced RAG (retrieval-augmented generation) system.</p>
                                     </div>
                                 </div>
                                 <div className="card">
