@@ -5,7 +5,7 @@ load_dotenv()
 
 class CoreAPI(BaseResearchAPI):
     BASE_URL = "https://api.core.ac.uk/v3/search/works"
-    CORE_API_KEY = os.getenv("CORE_API_KEY")
+    CORE_API_KEY = os.getenv("CORE_API_KEY") or os.environ.get("CORE_API_KEY")
     
 
     async def fetch(self, query, max_results=5):

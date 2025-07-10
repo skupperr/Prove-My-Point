@@ -18,12 +18,18 @@ export const useApi = () => {
         //     ...options
         // });
 
-        const response = await fetch(`https://prove-my-point.onrender.com/api/${endpoint}`, {
+        const response = await fetch(`https://fastapi-backend-707616033952.asia-south1.run.app/api/${endpoint}`, {
             ...defaultOptions,
             ...options
         });
 
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Error ${response.status}: ${errorText}`);
+        }
+
         return response.json();
+
     };
 
     return { makeRequest }

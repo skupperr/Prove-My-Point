@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-clerk_sdk = Clerk(bearer_auth = os.getenv('CLERK_SECRET_KEY'))
+clerk_sdk = Clerk(bearer_auth=os.getenv('CLERK_SECRET_KEY') or os.environ.get("CLERK_SECRET_KEY"))
 
 
 def authenticate_and_get_user_details(request):
@@ -30,7 +30,7 @@ def authenticate_and_get_user_details(request):
             AuthenticateRequestOptions(
                 authorized_parties=["https://prove-my-point.vercel.app", "http://localhost:5173"],  # Keep local dev for testing
 
-                jwt_key=os.getenv("JWT_KEY")
+                jwt_key=os.getenv("JWT_KEY") or os.environ.get("JWT_KEY")
                 # jwt_key = os.getenv("JWT_KEY").replace("\\n", "\n")
             )
         )

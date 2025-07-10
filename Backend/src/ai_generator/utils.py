@@ -102,7 +102,7 @@ def check_basic_rules(query: str) -> bool:
 
 def check_advance_rules(query: str):
 
-    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001", api_key=GOOGLE_API_KEY)
 
     prompt_template = ChatPromptTemplate.from_messages(
@@ -140,7 +140,7 @@ def response_from_papers(ranked_results, query):
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=ranked_results, question=query)
 
-    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001", api_key=GOOGLE_API_KEY)
     response = model.invoke(prompt)
 
