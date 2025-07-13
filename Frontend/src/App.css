@@ -361,9 +361,6 @@ body {
   .sidebar.open~.main-content {
     margin-left: 260px;
   }
-  .sample-search-1 {
-    width: 220px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -412,6 +409,9 @@ body {
 }
 
 @media (max-width: 480px) {
+  .parent-sample-search{
+    margin-top: 50px;
+  }
   .menu-toggle{
     margin-top: 30px;
     margin-bottom: 0rem;
@@ -438,7 +438,7 @@ body {
   .sample-search {
     margin-top: 12px;
     margin-bottom: 12px;
-    gap: 8px;
+    gap: 10px;
   }
   .sample-search-1 {
     font-size: 0.9rem;
