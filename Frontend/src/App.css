@@ -134,7 +134,7 @@ body {
   color: #ffffff;
   font-size: 1rem;
   padding: 1px 16px;
-} 
+}
 
 .auth-container {
   max-width: 400px;
@@ -147,7 +147,8 @@ body {
   margin-top: auto;
   padding-top: 80px
 }
-.cl-internal-y44tp9{
+
+.cl-internal-y44tp9 {
   display: none
 }
 
@@ -273,42 +274,43 @@ body {
   cursor: pointer;
   outline: none;
 }
-.menu-toggle:focus{
+
+.menu-toggle:focus {
   outline: none;
 }
 
 .close-btn {
-    outline: none;
+  outline: none;
 }
 
 .close-btn:focus {
-    outline: none;
-    box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .main-content.shifted {
-    transform: translateY(48px);
+  transform: translateY(48px);
 }
 
 .sidebar-menu {
-    list-style: none;
-    padding: 0;
-    margin-top: 2rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
 }
 
 .sidebar-menu li {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.2s ease, color 0.2s ease;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .sidebar-menu li:hover {
-    background-color: #334155; 
-    color: #ffffff;
+  background-color: #334155;
+  color: #ffffff;
 }
 
 .sidebar-menu li.active {
@@ -317,7 +319,7 @@ body {
   color: #ffffff;
 }
 
-.sample-search{
+/* .sample-search{
   display: flex;
   height: 48px;
   margin: auto ;
@@ -339,9 +341,50 @@ body {
   justify-content: space-between;
   cursor: pointer;
   transition: background 0.2s ease;
+} */
+
+.parent-sample-search {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 720px;
+
+  margin: auto;
 }
 
-.sample-search-1:hover{
+.sample-search-1 {
+  width: 350px;
+  min-width: 0;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #293038;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 20px;
+  text-align: left; /* Ensure text doesn't center */
+}
+
+.sample-search-1 p {
+  margin: 0;
+  text-align: left;
+  flex: 1;
+}
+
+
+.sample-search-1:hover {
+  background-color: #333333;
+}
+
+
+.sample-search-1:hover {
   background-color: #333333;
   border-radius: 10px;
 }
@@ -352,37 +395,56 @@ body {
     width: 260px;
     left: -260px;
   }
+
   .sidebar.open {
     left: 0;
   }
+
   .main-content {
     padding: 1rem;
   }
+
   .sidebar.open~.main-content {
     margin-left: 260px;
   }
 }
 
 @media (max-width: 768px) {
+
   .app-header,
   .navbar {
     padding: 0.5rem;
   }
+
   .header-content {
     gap: 0.5rem;
     padding: 0;
   }
+
   .sidebar {
     width: 200px;
     left: -200px;
     margin-top: 56px;
   }
+
   .sidebar.open~.main-content {
     margin-left: 200px;
   }
+
   .main-content {
     padding: 1rem;
   }
+
+  .parent-sample-search {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column on small screens */
+  gap: 12px;
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+
   .sample-search {
     flex-direction: column;
     align-items: stretch;
@@ -393,12 +455,15 @@ body {
     height: auto;
     max-width: 100%;
   }
+
   .sample-search-1 {
     width: 100%;
     min-width: 0;
-    padding-top: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     font-size: 0.95rem;
   }
+
   .question-box {
     max-width: 100%;
     margin: 24px 0;
@@ -409,52 +474,60 @@ body {
 }
 
 @media (max-width: 480px) {
-  .parent-sample-search{
+  .parent-sample-search {
     margin-top: 50px;
   }
-  .menu-toggle{
+
+  .menu-toggle {
     margin-top: 30px;
     margin-bottom: 0rem;
   }
+
   .app-header {
     padding: 0.25rem;
   }
+
   .header-content h1 {
     font-size: 1.1rem;
   }
+
   .sidebar {
     width: 100vw;
     left: -100vw;
     margin-top: 0px;
     padding: 0.5rem;
   }
+
   .sidebar.open {
     left: 0;
   }
+
   .main-content {
     padding: 0.5rem;
     margin-top: 56px;
   }
+
   .sample-search {
     margin-top: 12px;
     margin-bottom: 12px;
     gap: 10px;
   }
+
   .sample-search-1 {
     font-size: 0.9rem;
     padding: 6px;
   }
+
   .question-section {
     padding: 1rem 0.5rem;
   }
+
   .question-section h1 {
     font-size: 1.2rem;
   }
+
   .question-box input {
     font-size: 0.95rem;
     padding: 8px;
   }
 }
-
-
- 

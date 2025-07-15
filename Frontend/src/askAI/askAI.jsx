@@ -47,7 +47,7 @@ export default function AskAI({ inputText, setInputText, onSubmit }) {
                     </div>
                     <p>Powered by AI, answers are based on published research papers.</p>
 
-                    <div className='parent-sample-search'>
+                    {/* <div className='parent-sample-search'>
                         <div className='sample-search'>
                             <div
                                 className="sample-search-1"
@@ -103,7 +103,33 @@ export default function AskAI({ inputText, setInputText, onSubmit }) {
                             </div>
 
                         </div>
+                    </div> */}
+
+
+                    <div className='parent-sample-search'>
+                        {[
+                            "Can solar flares disrupt GPS?",
+                            "What is the impact of AI on education?",
+                            "Can local birds recognize human faces?",
+                            "Why do phone screens affect our sleep?",
+                        ].map((question, index) => (
+                            <div
+                                key={index}
+                                className="sample-search-1"
+                                onClick={() => {
+                                    setInputText(question);
+                                    onSubmit(question);
+                                }}
+                            >
+                                <p>{question}</p>
+                                <i
+                                    className="fa-solid fa-magnifying-glass"
+                                    style={{ color: '#8f9194', marginRight: '1rem', marginTop: '0.4rem' }}
+                                ></i>
+                            </div>
+                        ))}
                     </div>
+
                 </div>
             </div>
         </div>
