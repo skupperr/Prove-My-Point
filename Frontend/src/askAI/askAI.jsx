@@ -124,7 +124,7 @@ export default function AskAI({ inputText, setInputText, onSubmit }) {
                                 <p>{question}</p>
                                 <i
                                     className="fa-solid fa-magnifying-glass"
-                                    style={{ color: '#8f9194', marginRight: '1rem', marginTop: '0.4rem' }}
+                                    style={{ color: '#8f9194', marginRight: '1rem', marginTop: '0.2rem' }}
                                 ></i>
                             </div>
                         ))}
