@@ -49,8 +49,8 @@ export function Layout() {
                         </SignedIn>
                         <SignedOut>
                             <button className="nav-button" onClick={() => navigate('/sign-in')}>
-                                <i className="fa-solid fa-user" style={{ color: '#ffffff', marginRight: '0.5rem' }}></i>
-                                Sign In
+                                <i className="fa-solid fa-user" style={{ color: '#ffffff' }}></i>
+                                <span className='sign-in-btn' style={{ marginLeft: '0.5rem' }}>Sign In</span>
                             </button>
                         </SignedOut>
                     </nav>

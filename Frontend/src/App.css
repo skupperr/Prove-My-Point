@@ -416,9 +416,13 @@ body {
     padding: 0.5rem;
   }
 
+  .sign-in-btn{
+    display: none;
+  }
+
   .header-content {
     gap: 0.5rem;
-    padding: 0;
+    padding: 0 0.5rem;
   }
 
   .sidebar {
@@ -438,7 +442,7 @@ body {
   .parent-sample-search {
   display: grid;
   grid-template-columns: 1fr; /* 1 column on small screens */
-  gap: 12px;
+  gap: 0px;
   width: 100%;
   padding: 0 1rem;
   margin: 0 auto;
