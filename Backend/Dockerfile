@@ -22,3 +22,29 @@ ENV PORT=8080
 
 # Start FastAPI using server.py
 CMD ["python", "server.py"]
+
+
+# FROM python:3.11-slim
+
+# # Set environment vars
+# ENV PYTHONDONTWRITEBYTECODE=1
+# ENV PYTHONUNBUFFERED=1
+
+# WORKDIR /app
+
+# # Install dependencies
+# RUN apt-get update \
+#     && apt-get install -y --no-install-recommends gcc \
+#     && apt-get clean \
+#     && rm -rf /var/lib/apt/lists/*
+
+# COPY requirements.txt .
+
+# # Use pip cache + clean tricks
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# COPY . .
+
+# ENV PORT=8080
+
+# CMD ["python", "server.py"]

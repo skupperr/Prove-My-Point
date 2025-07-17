@@ -4,3 +4,14 @@ __pycache__/
 *.pyd
 .env
 firebase-key.json
+*.db
+*.sqlite3
+*.ipynb
+.vscode/
+.git/
+node_modules/
+tests/
+README.md
+.venv/
+*.log
+.ipynb_checkpoints/

@@ -4,13 +4,11 @@ python-dotenv
 clerk_backend_api 
 svix
 langchain
-langchain-community
 langchain-google-genai
-langchain-google-firestore
 firestore
+firebase_admin
 tiktoken
 sentence-transformers
-langchainhub
 aiohttp 
 feedparser 
 xmltodict
