@@ -1,29 +1,46 @@
-from .base_api import BaseResearchAPI
 import aiohttp
-import feedparser
-import re
+import xml.etree.ElementTree as ET
+from .base_api import BaseResearchAPI
 
 class ArxivAPI(BaseResearchAPI):
-    async def fetch(self, query, max_results=15):
-        base_url = 'http://export.arxiv.org/api/query'
-        search_query = f'search_query=all:{query}&start=0&max_results={max_results}'
-        url = f"{base_url}?{search_query}"
+    BASE_URL = "https://export.arxiv.org/api/query"
 
+    async def fetch(self, query, max_results=5):
+        params = {
+            "search_query": f"all:{query}",
+            "start": 0,
+            "max_results": max_results * 2
+        }
+
+        # We skip using self.get() because it expects JSON.
         async with aiohttp.ClientSession() as session:
-            async with session.get(url) as response:
-                data = await response.text()
-                parsed = feedparser.parse(data)
+            async with session.get(self.BASE_URL, params=params) as response:
+                xml_text = await response.text()
+
+        # Parse the Atom XML response
+        root = ET.fromstring(xml_text)
+        ns = {"atom": "http://www.w3.org/2005/Atom"}
 
         results = []
-        for entry in parsed.entries:
+        for entry in root.findall("atom:entry", ns):
+            title = entry.find("atom:title", ns).text.strip()
+            summary = entry.find("atom:summary", ns).text.strip()
+            authors = [a.find("atom:name", ns).text.strip() for a in entry.findall("atom:author", ns)]
+            published = entry.find("atom:published", ns).text[:4]  # Just year
+            link = entry.find("atom:id", ns).text.strip()
+
             results.append({
-                "title": entry.title,
-                "summary": self.clean_text(entry.summary),
-                "authors": [author.name for author in entry.authors],
-                "doi": entry.link,
-                "year": entry.published[:4],
-                "web_link": entry.link,
+                "title": title,
+                "summary": self.clean_text(summary),
+                "authors": authors,
+                "doi": None,  # arXiv typically doesn’t include DOI in the API
+                "year": published,
+                "web_link": link,
                 "score": None,
-                "source": "Arxiv"
+                "source": "arXiv"
             })
+
+            if len(results) >= max_results:
+                break
+
         return results

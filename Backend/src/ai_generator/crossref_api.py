@@ -9,15 +9,20 @@ class CrossRefAPI(BaseResearchAPI):
             "rows": max_results * 2,
             "sort": "score",
             "filter": "type:journal-article",
-            "mailto": "your@email.com"
+            "mailto": "your@email.com"  # Replace this with a valid email
         }
-        data = await self.get(self.BASE_URL, params=params)
+
+        try:
+            data = await self.get(self.BASE_URL, params=params)
+        except Exception as e:
+            print(f"⚠️ CrossRefAPI failed: {e}")
+            return []
 
         results = []
-        for item in data["message"].get("items", []):
+        for item in data.get("message", {}).get("items", []):
             abstract = item.get("abstract")
             if not abstract:
-                continue
+                continue  # Skip if no abstract
 
             authors = [
                 f"{a.get('given', '')} {a.get('family', '')}".strip()
@@ -28,7 +33,7 @@ class CrossRefAPI(BaseResearchAPI):
                 "title": item.get("title", [""])[0],
                 "summary": self.clean_text(abstract),
                 "authors": authors,
-                "doi": "https://doi.org/"+item.get("DOI"),
+                "doi": f"https://doi.org/{item.get('DOI')}" if item.get("DOI") else None,
                 "year": (
                     item.get("published-print", {}).get("date-parts", [[None]])[0][0]
                     or item.get("published-online", {}).get("date-parts", [[None]])[0][0]

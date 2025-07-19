@@ -1,6 +1,5 @@
 from .base_api import BaseResearchAPI
 
-
 class OpenAlexAPI(BaseResearchAPI):
     BASE_URL = "https://api.openalex.org/works"
 
@@ -10,18 +9,35 @@ class OpenAlexAPI(BaseResearchAPI):
             "per-page": max_results,
             "sort": "relevance_score:desc"
         }
-        data = await self.get(self.BASE_URL, params=params)
+
+        try:
+            data = await self.get(self.BASE_URL, params=params)
+        except Exception as e:
+            print(f"⚠️ OpenAlexAPI failed: {e}")
+            return []
 
         results = []
         for item in data.get("results", []):
-            authors = [a["author"]["display_name"] for a in item.get("authorships", []) if "author" in a]
+            authors = [
+                a["author"].get("display_name")
+                for a in item.get("authorships", [])
+                if isinstance(a, dict) and "author" in a and isinstance(a["author"], dict)
+            ]
 
-            abstract = item.get("abstract_inverted_index")
-            if abstract:
-                words = sorted((i, w) for w, idxs in abstract.items() for i in idxs)
-                abstract_text = " ".join(w for _, w in words)
-            else:
-                abstract_text = ""
+            # Reconstruct abstract from inverted index
+            abstract_text = ""
+            abstract_index = item.get("abstract_inverted_index")
+            if abstract_index:
+                try:
+                    position_map = []
+                    for word, positions in abstract_index.items():
+                        for pos in positions:
+                            position_map.append((pos, word))
+                    # Sort by position and join
+                    abstract_text = " ".join(word for _, word in sorted(position_map))
+                except Exception as e:
+                    print(f"⚠️ Error decoding abstract_inverted_index: {e}")
+                    abstract_text = ""
 
             results.append({
                 "title": item.get("title"),
@@ -33,4 +49,5 @@ class OpenAlexAPI(BaseResearchAPI):
                 "score": item.get("relevance_score"),
                 "source": "OpenAlex"
             })
+
         return results

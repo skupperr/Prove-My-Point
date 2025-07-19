@@ -13,3 +13,4 @@ aiohttp
 feedparser 
 xmltodict
 coreapi
+async-timeout
