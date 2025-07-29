@@ -57,10 +57,24 @@ Return ONLY the output in raw JSON format, like this:
 }}
 """
 
-PROMPT_TEMPLATE = """Answer the question based ONLY on the following context:
+PROMPT_TEMPLATE = """
+Answer the following question using ONLY the information in the context **if** it contains a clear and complete answer.
+
+If the context does **not** contain a clear answer, respond based on reliable knowledge or reputable sources. Do NOT mention that the context is lacking or that the documents don't say something.
+
+Strict Rules:
+1. Do NOT use phrases like "The context says", "The documents mention", or "According to the research papers".
+2. Provide a clear, concise answer as if you are the expert, not summarizing sources.
+3. If the context is insufficient, provide a well-informed answer from reliable knowledge — or state that there isn’t enough evidence in research papers to support the claim.
+
+Context:
 {context}
-Question: {question}
+
+Question:
+{question}
 """
+
+
 
 # Patterns that immediately disqualify a query
 INVALID_PATTERNS = [
