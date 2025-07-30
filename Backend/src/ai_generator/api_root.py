@@ -4,6 +4,7 @@ from .arxiv_api import ArxivAPI
 from .pubmed_api import PubMedAPI
 from .openalex_api import OpenAlexAPI
 from .core_api import CoreAPI
+from .semantic_scholar import SemanticScholarAPI
 import asyncio
 
 
@@ -39,7 +40,8 @@ async def fetch_all(query):
         PubMedAPI(),
         CrossRefAPI(),
         OpenAlexAPI(),
-        CoreAPI()
+        CoreAPI(),
+        SemanticScholarAPI()
     ]
 
     all_results = []

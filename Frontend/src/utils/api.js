@@ -13,6 +13,7 @@ export const useApi = () => {
             }
         };
 
+        const startTime = performance.now(); // Start timer
         // const response = await fetch(`http://localhost:8000/api/${endpoint}`, {
         //     ...defaultOptions,
         //     ...options
@@ -22,6 +23,10 @@ export const useApi = () => {
             ...defaultOptions,
             ...options
         });
+
+        const endTime = performance.now(); // End timer
+        const responseTime = endTime - startTime;
+        console.log(`API response time: ${responseTime.toFixed(2)} ms`);
 
         if (!response.ok) {
             const errorText = await response.text();

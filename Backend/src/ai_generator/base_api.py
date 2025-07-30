@@ -7,7 +7,7 @@ class BaseResearchAPI:
     # Removed shared self.session
 
     async def get(self, url, params=None, headers=None, retries=3, backoff_factor=1.5, return_text=False, timeout=15):
-        delay = 1
+        delay = 2
         for attempt in range(retries):
             try:
                 async with aiohttp.ClientSession() as session:

@@ -91,13 +91,7 @@ MAX_LENGTH = 400
 
 load_dotenv()
 
-# def checking_rules_and_formatting(query:str):
-    
-#     isPassedBasicRules = check_basic_rules(query)
-#     if isPassedBasicRules:
-#         result = check_advance_rules(query)
-    
-#     return formatting_query(result)
+
 
 async def checking_rules_and_formatting(query: str):
     isPassedBasicRules = check_basic_rules(query)
@@ -123,23 +117,7 @@ def check_basic_rules(query: str) -> bool:
 
     return True
 
-# def check_advance_rules(query: str):
 
-#     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-#     model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001", api_key=GOOGLE_API_KEY)
-
-#     prompt_template = ChatPromptTemplate.from_messages(
-#         [
-#             ("system", SCIENTIFIC_QUERY_VALIDATOR_PROMPT),
-#             ("human", "Query: {query} \n Is this query valid or invalid?"),
-#         ]
-#     )
-
-#     chain = prompt_template | model | StrOutputParser()
-
-#     result_str = chain.invoke({"query": query})
-
-#     return result_str
 
 async def check_advance_rules(query: str):
     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") or os.environ.get("GOOGLE_API_KEY")
@@ -173,16 +151,6 @@ def vector_reranker(query, papers):
     return ranked_results
 
 
-# def response_from_papers(ranked_results, query):
-
-#     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
-#     prompt = prompt_template.format(context=ranked_results, question=query)
-
-#     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-#     model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-001", api_key=GOOGLE_API_KEY)
-#     response = model.invoke(prompt)
-
-#     return response.content
 
 async def response_from_papers(ranked_results, query):
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
@@ -195,26 +163,6 @@ async def response_from_papers(ranked_results, query):
     return response.content
 
 
-
-# async def main(query):
-#     validity, explanation, search_term = checking_rules_and_formatting(query)
-
-#     if validity == "VALID":
-#         papers = await fetch_all(search_term)
-#         ranked_results = vector_reranker(query, papers)
-#         response = response_from_papers(ranked_results, query)
-
-#         return {
-#             "status": "VALID",
-#             "response": response,
-#             "ranked_results": ranked_results
-#         }
-
-#     elif validity == "INVALID":
-#         return {
-#             "status": "INVALID",
-#             "explanation": explanation
-#         }
 
 async def main(query):
     validity, explanation, search_term = await checking_rules_and_formatting(query)
