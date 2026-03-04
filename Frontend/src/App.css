@@ -535,3 +535,13 @@ body {
     padding: 8px;
   }
 }
+
+.app-notice {
+    width: 100%;
+    background-color: #2b1f00;
+    color: #ffcc66;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #3a2a00;
+}

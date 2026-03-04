@@ -26,6 +26,13 @@ export default function AskAI({ inputText, setInputText, onSubmit }) {
 
             {/* Main Content */}
             <div className={`main-content ${sidebarOpen ? 'shifted' : ''}`}>
+
+                {/* Temporary Notice Banner */}
+                <div className="app-notice">
+                    ⚠️ The application is temporarily unavailable due to an issue with an external API.
+                    We're working to restore full functionality as soon as possible.
+                </div>
+
                 {!sidebarOpen && (
                     <button className="menu-toggle" onClick={toggleSidebar}>
                         <i className="fas fa-bars" style={{ color: '#ffffff' }}></i>
@@ -46,65 +53,6 @@ export default function AskAI({ inputText, setInputText, onSubmit }) {
                         />
                     </div>
                     <p>Powered by AI, answers are based on published research papers.</p>
-
-                    {/* <div className='parent-sample-search'>
-                        <div className='sample-search'>
-                            <div
-                                className="sample-search-1"
-                                onClick={() => {
-                                    const question = "Can solar flares disrupt GPS?";
-                                    setInputText(question);
-                                    onSubmit(question);
-                                }}
-                            >
-                                <p>Can solar flares disrupt GPS?</p>
-                                <i className="fa-solid fa-magnifying-glass" style={{ color: '#8f9194', marginRight: '1rem', marginTop: '0.4rem' }}></i>
-                            </div>
-
-                            <div
-                                className="sample-search-1"
-                                onClick={() => {
-                                    const question = "What is the impact of AI on education?";
-                                    setInputText(question);
-                                    onSubmit(question);
-                                }}
-                            >
-                                <p>What is the impact of AI on education?</p>
-                                <i className="fa-solid fa-magnifying-glass" style={{ color: '#8f9194', marginRight: '1rem', marginTop: '0.4rem' }}></i>
-                            </div>
-
-                        </div>
-
-
-
-                        <div className='sample-search'>
-                            <div
-                                className="sample-search-1"
-                                onClick={() => {
-                                    const question = "Can local birds recognize human faces?";
-                                    setInputText(question);
-                                    onSubmit(question);
-                                }}
-                            >
-                                <p>Can local birds recognize human faces?</p>
-                                <i className="fa-solid fa-magnifying-glass" style={{ color: '#8f9194', marginRight: '1rem', marginTop: '0.4rem' }}></i>
-                            </div>
-
-                            <div
-                                className="sample-search-1"
-                                onClick={() => {
-                                    const question = "Why do phone screens affect our sleep?";
-                                    setInputText(question);
-                                    onSubmit(question);
-                                }}
-                            >
-                                <p>Why do phone screens affect our sleep?</p>
-                                <i className="fa-solid fa-magnifying-glass" style={{ color: '#8f9194', marginRight: '1rem', marginTop: '0.4rem' }}></i>
-                            </div>
-
-                        </div>
-                    </div> */}
-
 
                     <div className='parent-sample-search'>
                         {[
